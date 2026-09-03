@@ -1,36 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Excuse Generator Pro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Excuse Lab - Generate creative and hilarious excuses for any situation."
+    >
+
+    <title>Excuse Lab | Your Emergency Excuse Generator</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  
-    <div class="container">
 
-        <h1>😂 Excuse Generator Pro</h1>
+    <!-- Animated background -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-        <p>Need an excuse? We have absolutely terrible ones!</p>
+    <header class="navbar">
 
-        <select id="category">
-            <option value="college">🎓 College Excuses</option>
-            <option value="late">📝 Late Submission</option>
-            <option value="skip">🏫 Skipping Class</option>
-            <option value="random">🎲 Random Excuse</option>
-        </select>
-         <button onclick="generateExcuse()">
-            Generate Excuse 😂
-        </button>
-
-        <div id="excuse">
-            Your excuse will appear here...
+        <div class="logo">
+            <span class="logo-icon">🎭</span>
+            <span>Excuse<span class="logo-highlight">Lab</span></span>
         </div>
 
+        <div class="status">
+            <span class="status-dot"></span>
+            Excuse engine online
+        </div>
+
+    </header>
+
+
+    <main class="main-container">
+
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <div class="badge">
+                ⚡ YOUR EMERGENCY EXCUSE MACHINE
+            </div>
+
+            <h1>
+                Need an excuse?
+                <span>We've got you.</span>
+            </h1>
+
+            <p>
+                Choose a situation, generate an excuse,
+                and pretend everything was completely under control.
+            </p>
+
+        </section>
+
+
+        <!-- Generator -->
+        <section class="generator">
+
+            <!-- Category Selection -->
+            <div class="section-heading">
+
+                <div>
+                    <span class="small-label">STEP 01</span>
+                    <h2>What's the situation?</h2>
+                </div>
+
+            </div>
+
+
+            <div class="categories">
+
+                <button class="category active" data-category="college">
+                    <span class="category-icon">🎓</span>
+                    <span>
+                        <strong>College</strong>
+                        <small>Class & attendance</small>
+                    </span>
+                </button>
+
+
+                <button class="category" data-category="late">
+                    <span class="category-icon">📝</span>
+                    <span>
+                        <strong>Late Work</strong>
+                        <small>Assignments & deadlines</small>
+                    </span>
+                </button>
+
+
+                <button class="category" data-category="skip">
+                    <span class="category-icon">🏫</span>
+                    <span>
+                        <strong>Skipping</strong>
+                        <small>Why weren't you there?</small>
+                    </span>
+                </button>
+
+
+                <button class="category" data-category="random">
+                    <span class="category-icon">🎲</span>
+                    <span>
+                        <strong>Surprise Me</strong>
+                        <small>Something ridiculous</small>
+                    </span>
+                </button>
+
+            </div>
+
+
+            <!-- Generate Button -->
+            <button id="generateBtn" class="generate-button">
+
+                <span class="button-icon">✨</span>
+
+                <span>Generate Excuse</span>
+
+                <span class="button-arrow">→</span>
+
+            </button>
+
+
+            <!-- Result -->
+            <div class="result-card">
+
+                <div class="result-header">
+
+                    <span class="result-label">
+                        YOUR OFFICIAL EXCUSE
+                    </span>
+
+                    <span id="categoryBadge" class="result-category">
+                        COLLEGE
+                    </span>
+
+                </div>
+
+
+                <div class="excuse-content">
+
+                    <span class="quote-mark">“</span>
+
+                    <p id="excuse">
+                        Your excuse will appear here...
+                    </p>
+
+                    <span class="quote-mark closing">”</span>
+
+                </div>
+
+
+                <!-- Believability -->
+                <div class="believability">
+
+                    <div class="believability-header">
+
+                        <span>
+                            Believability
+                        </span>
+
+                        <strong id="score">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress">
+                        <div id="progressBar"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- Actions -->
+                <div class="actions">
+
+                    <button id="copyBtn" class="action-button">
+                        📋 Copy
+                    </button>
+
+                    <button id="favoriteBtn" class="action-button">
+                        ♡ Favorite
+                    </button>
+
+                    <button id="againBtn" class="action-button primary-action">
+                        🔄 Again
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Disclaimer -->
+        <section class="disclaimer">
+
+            <span>💡</span>
+
+            <p>
+                <strong>Disclaimer:</strong>
+                These excuses are scientifically unverified
+                and approximately 97% ridiculous.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 ExcuseLab · Built for questionable emergencies.
+        </p>
+
+    </footer>
+
+
+    <div id="toast" class="toast">
+        Excuse copied! 📋
     </div>
+
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
-       
