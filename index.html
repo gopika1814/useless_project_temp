@@ -7,17 +7,17 @@
 
     <meta
         name="description"
-        content="Excuse Lab - Generate creative and hilarious excuses for any situation."
+        content="ExcuseLab - Your emergency excuse generator."
     >
 
-    <title>Excuse Lab | Your Emergency Excuse Generator</title>
+    <title>ExcuseLab | Emergency Excuse Generator</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Animated background -->
+    <!-- Background decoration -->
     <div class="background">
         <span></span>
         <span></span>
@@ -25,34 +25,68 @@
         <span></span>
     </div>
 
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
     <header class="navbar">
 
         <div class="logo">
-            <span class="logo-icon">🎭</span>
-            <span>Excuse<span class="logo-highlight">Lab</span></span>
+            <div class="logo-icon">🎭</div>
+
+            <span>
+                Excuse<span class="logo-highlight">Lab</span>
+            </span>
         </div>
 
-        <div class="status">
-            <span class="status-dot"></span>
-            Excuse engine online
+
+        <div class="nav-actions">
+
+            <button
+                id="favoritesBtn"
+                class="favorites-nav"
+                type="button"
+            >
+                ❤️ Favorites
+                <span id="favoriteCount">0</span>
+            </button>
+
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Excuse engine online
+
+            </div>
+
         </div>
 
     </header>
 
 
+    <!-- =========================
+         MAIN
+    ========================== -->
+
     <main class="main-container">
 
-        <!-- Hero Section -->
+
+        <!-- HERO -->
+
         <section class="hero">
 
             <div class="badge">
                 ⚡ YOUR EMERGENCY EXCUSE MACHINE
             </div>
 
+
             <h1>
                 Need an excuse?
                 <span>We've got you.</span>
             </h1>
+
 
             <p>
                 Choose a situation, generate an excuse,
@@ -62,74 +96,170 @@
         </section>
 
 
-        <!-- Generator -->
+
+        <!-- =========================
+             GENERATOR
+        ========================== -->
+
         <section class="generator">
 
-            <!-- Category Selection -->
+
+            <!-- STEP -->
+
             <div class="section-heading">
 
-                <div>
-                    <span class="small-label">STEP 01</span>
-                    <h2>What's the situation?</h2>
-                </div>
+                <span class="small-label">
+                    STEP 01
+                </span>
+
+                <h2>
+                    What's the situation?
+                </h2>
 
             </div>
 
+
+            <!-- CATEGORIES -->
 
             <div class="categories">
 
-                <button class="category active" data-category="college">
-                    <span class="category-icon">🎓</span>
-                    <span>
-                        <strong>College</strong>
-                        <small>Class & attendance</small>
+
+                <button
+                    class="category active"
+                    data-category="college"
+                    type="button"
+                >
+
+                    <span class="category-icon">
+                        🎓
                     </span>
+
+                    <span>
+
+                        <strong>
+                            College
+                        </strong>
+
+                        <small>
+                            Class & attendance
+                        </small>
+
+                    </span>
+
                 </button>
 
 
-                <button class="category" data-category="late">
-                    <span class="category-icon">📝</span>
-                    <span>
-                        <strong>Late Work</strong>
-                        <small>Assignments & deadlines</small>
+
+                <button
+                    class="category"
+                    data-category="late"
+                    type="button"
+                >
+
+                    <span class="category-icon">
+                        📝
                     </span>
+
+                    <span>
+
+                        <strong>
+                            Late Work
+                        </strong>
+
+                        <small>
+                            Assignments & deadlines
+                        </small>
+
+                    </span>
+
                 </button>
 
 
-                <button class="category" data-category="skip">
-                    <span class="category-icon">🏫</span>
-                    <span>
-                        <strong>Skipping</strong>
-                        <small>Why weren't you there?</small>
+
+                <button
+                    class="category"
+                    data-category="skip"
+                    type="button"
+                >
+
+                    <span class="category-icon">
+                        🏫
                     </span>
+
+                    <span>
+
+                        <strong>
+                            Skipping
+                        </strong>
+
+                        <small>
+                            Why weren't you there?
+                        </small>
+
+                    </span>
+
                 </button>
 
 
-                <button class="category" data-category="random">
-                    <span class="category-icon">🎲</span>
-                    <span>
-                        <strong>Surprise Me</strong>
-                        <small>Something ridiculous</small>
+
+                <button
+                    class="category"
+                    data-category="random"
+                    type="button"
+                >
+
+                    <span class="category-icon">
+                        🎲
                     </span>
+
+                    <span>
+
+                        <strong>
+                            Surprise Me
+                        </strong>
+
+                        <small>
+                            Something ridiculous
+                        </small>
+
+                    </span>
+
                 </button>
 
             </div>
 
 
-            <!-- Generate Button -->
-            <button id="generateBtn" class="generate-button">
 
-                <span class="button-icon">✨</span>
+            <!-- GENERATE -->
 
-                <span>Generate Excuse</span>
+            <button
+                id="generateBtn"
+                class="generate-button"
+                type="button"
+            >
 
-                <span class="button-arrow">→</span>
+                <span>
+                    ✨
+                </span>
+
+                <span>
+                    Generate Excuse
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
 
             </button>
 
 
-            <!-- Result -->
+
+            <!-- =========================
+                 RESULT
+            ========================== -->
+
             <div class="result-card">
+
 
                 <div class="result-header">
 
@@ -137,27 +267,39 @@
                         YOUR OFFICIAL EXCUSE
                     </span>
 
-                    <span id="categoryBadge" class="result-category">
+                    <span
+                        id="categoryBadge"
+                        class="result-category"
+                    >
                         COLLEGE
                     </span>
 
                 </div>
 
 
+
                 <div class="excuse-content">
 
-                    <span class="quote-mark">“</span>
+                    <span class="quote-mark">
+                        “
+                    </span>
+
 
                     <p id="excuse">
                         Your excuse will appear here...
                     </p>
 
-                    <span class="quote-mark closing">”</span>
+
+                    <span class="quote-mark closing">
+                        ”
+                    </span>
 
                 </div>
 
 
-                <!-- Believability -->
+
+                <!-- BELIEVABILITY -->
+
                 <div class="believability">
 
                     <div class="believability-header">
@@ -172,25 +314,44 @@
 
                     </div>
 
+
                     <div class="progress">
+
                         <div id="progressBar"></div>
+
                     </div>
 
                 </div>
 
 
-                <!-- Actions -->
+
+                <!-- ACTION BUTTONS -->
+
                 <div class="actions">
 
-                    <button id="copyBtn" class="action-button">
+                    <button
+                        id="copyBtn"
+                        class="action-button"
+                        type="button"
+                    >
                         📋 Copy
                     </button>
 
-                    <button id="favoriteBtn" class="action-button">
+
+                    <button
+                        id="favoriteBtn"
+                        class="action-button"
+                        type="button"
+                    >
                         ♡ Favorite
                     </button>
 
-                    <button id="againBtn" class="action-button primary-action">
+
+                    <button
+                        id="againBtn"
+                        class="action-button primary-action"
+                        type="button"
+                    >
                         🔄 Again
                     </button>
 
@@ -201,10 +362,16 @@
         </section>
 
 
-        <!-- Disclaimer -->
+
+        <!-- =========================
+             DISCLAIMER
+        ========================== -->
+
         <section class="disclaimer">
 
-            <span>💡</span>
+            <span>
+                💡
+            </span>
 
             <p>
                 <strong>Disclaimer:</strong>
@@ -217,6 +384,11 @@
     </main>
 
 
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
 
         <p>
@@ -226,10 +398,87 @@
     </footer>
 
 
-    <div id="toast" class="toast">
+
+    <!-- =========================
+         FAVORITES PANEL
+    ========================== -->
+
+    <aside
+        id="favoritesPanel"
+        class="favorites-panel"
+        aria-hidden="true"
+    >
+
+        <div class="favorites-header">
+
+            <div>
+
+                <span class="small-label">
+                    YOUR COLLECTION
+                </span>
+
+                <h2>
+                    ❤️ Favorite Excuses
+                </h2>
+
+            </div>
+
+
+            <button
+                id="closeFavorites"
+                class="close-btn"
+                type="button"
+                aria-label="Close favorites"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+
+        <!-- FAVORITES LIST -->
+
+        <div
+            id="favoritesList"
+            class="favorites-list"
+        >
+
+            <p class="empty-favorites">
+                You haven't saved any excuses yet. 😭
+            </p>
+
+        </div>
+
+
+
+        <!-- CLEAR -->
+
+        <button
+            id="clearFavorites"
+            class="clear-btn"
+            type="button"
+        >
+            🗑 Clear All Favorites
+        </button>
+
+    </aside>
+
+
+
+    <!-- TOAST -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+    >
         Excuse copied! 📋
     </div>
 
+
+
+    <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
 

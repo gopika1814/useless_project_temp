@@ -15,8 +15,11 @@ const excuses = {
         "I was mentally present in class.",
         "My academic motivation temporarily left the building.",
         "I arrived spiritually, just not physically.",
-        "My backpack and I had a disagreement this morning."
+        "My backpack and I had a disagreement this morning.",
+        "I was preparing emotionally for today's lecture.",
+        "My brain was still loading when class started."
     ],
+
 
     late: [
         "My laptop needed emotional support.",
@@ -26,8 +29,11 @@ const excuses = {
         "My keyboard went on strike.",
         "The deadline and I simply had different expectations.",
         "My file was ready, but technology had other plans.",
-        "I was waiting for my creativity to finish loading."
+        "I was waiting for my creativity to finish loading.",
+        "My document refused to save at the most important moment.",
+        "I underestimated how quickly time could disappear."
     ],
+
 
     skip: [
         "My bed refused to release me.",
@@ -37,8 +43,11 @@ const excuses = {
         "My motivation couldn't find the classroom.",
         "I was physically unavailable but mentally supportive.",
         "My alarm rang, but apparently I didn't.",
-        "I was conducting important research on sleep."
+        "I was conducting important research on sleep.",
+        "My blanket activated maximum-security mode.",
+        "I had an unexpected meeting with my pillow."
     ],
+
 
     random: [
         "A pigeon distracted me for 45 minutes.",
@@ -48,7 +57,9 @@ const excuses = {
         "My brain needed a software update.",
         "A completely unnecessary situation became extremely necessary.",
         "I got distracted by absolutely nothing.",
-        "My productivity called in sick."
+        "My productivity called in sick.",
+        "I was temporarily confused by the concept of time.",
+        "Something happened. I don't know what, but it happened."
     ]
 
 };
@@ -88,35 +99,72 @@ const progressBar =
 const toast =
     document.getElementById("toast");
 
+const favoritesBtn =
+    document.getElementById("favoritesBtn");
+
+const favoriteCount =
+    document.getElementById("favoriteCount");
+
+const favoritesPanel =
+    document.getElementById("favoritesPanel");
+
+const closeFavorites =
+    document.getElementById("closeFavorites");
+
+const favoritesList =
+    document.getElementById("favoritesList");
+
+const clearFavorites =
+    document.getElementById("clearFavorites");
+
 
 /* ========================================
-   CURRENT CATEGORY
+   VARIABLES
 ======================================== */
 
 let currentCategory = "college";
 
+let currentExcuse = "";
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem("excuseFavorites")
+    ) || [];
+
 
 /* ========================================
-   SELECT CATEGORY
+   CATEGORY SELECTION
 ======================================== */
 
 categoryButtons.forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        categoryButtons.forEach(item => {
-            item.classList.remove("active");
-        });
+            categoryButtons.forEach(item => {
 
-        button.classList.add("active");
+                item.classList.remove(
+                    "active"
+                );
 
-        currentCategory =
-            button.dataset.category;
+            });
 
-        categoryBadge.textContent =
-            currentCategory.toUpperCase();
 
-    });
+            button.classList.add(
+                "active"
+            );
+
+
+            currentCategory =
+                button.dataset.category;
+
+
+            categoryBadge.textContent =
+                currentCategory.toUpperCase();
+
+        }
+    );
 
 });
 
@@ -130,19 +178,44 @@ function generateExcuse() {
     const list =
         excuses[currentCategory];
 
-    const randomIndex =
+
+    if (!list || list.length === 0) {
+
+        excuseElement.textContent =
+            "Oops! No excuses available.";
+
+        return;
+    }
+
+
+    let randomIndex =
         Math.floor(
             Math.random() * list.length
         );
 
-    const selectedExcuse =
+
+    /*
+       Prevent the same excuse from
+       appearing twice in a row.
+    */
+
+    if (
+        list.length > 1 &&
+        list[randomIndex] === currentExcuse
+    ) {
+
+        randomIndex =
+            (randomIndex + 1) % list.length;
+
+    }
+
+
+    currentExcuse =
         list[randomIndex];
 
 
-    /* Display excuse */
-
     excuseElement.textContent =
-        selectedExcuse;
+        currentExcuse;
 
 
     /* Animation */
@@ -151,21 +224,29 @@ function generateExcuse() {
         "excuse-animation"
     );
 
+
     void excuseElement.offsetWidth;
+
 
     excuseElement.classList.add(
         "excuse-animation"
     );
 
 
-    /* Generate random believability */
+    /* Believability */
 
     const score =
         Math.floor(
             Math.random() * 41
         ) + 55;
 
+
     updateScore(score);
+
+
+    /* Reset favorite button */
+
+    updateFavoriteButton();
 
 }
 
@@ -178,6 +259,7 @@ function updateScore(score) {
 
     scoreElement.textContent =
         `${score}%`;
+
 
     progressBar.style.width =
         `${score}%`;
@@ -193,21 +275,22 @@ copyButton.addEventListener(
     "click",
     async () => {
 
-        const text =
-            excuseElement.textContent;
+        if (!currentExcuse) {
 
-        if (
-            !text ||
-            text === "Your excuse will appear here..."
-        ) {
+            showToast(
+                "Generate an excuse first! 😂"
+            );
+
             return;
         }
+
 
         try {
 
             await navigator.clipboard.writeText(
-                text
+                currentExcuse
             );
+
 
             showToast(
                 "Excuse copied! 📋"
@@ -226,33 +309,332 @@ copyButton.addEventListener(
 
 
 /* ========================================
-   FAVORITE
+   FAVORITE CURRENT EXCUSE
 ======================================== */
 
 favoriteButton.addEventListener(
     "click",
     () => {
 
-        const isFavorite =
-            favoriteButton.classList.toggle(
-                "favorite"
-            );
-
-        if (isFavorite) {
-
-            favoriteButton.textContent =
-                "♥ Saved";
+        if (!currentExcuse) {
 
             showToast(
-                "Added to favorites! ❤️"
+                "Generate an excuse first! 😂"
             );
 
-        } else {
-
-            favoriteButton.textContent =
-                "♡ Favorite";
-
+            return;
         }
+
+
+        const existingIndex =
+            favorites.findIndex(
+                item =>
+                    item.text === currentExcuse
+            );
+
+
+        /* Remove if already saved */
+
+        if (existingIndex !== -1) {
+
+            favorites.splice(
+                existingIndex,
+                1
+            );
+
+
+            saveFavorites();
+
+            updateFavoriteButton();
+
+            renderFavorites();
+
+            showToast(
+                "Removed from favorites."
+            );
+
+            return;
+        }
+
+
+        /* Add favorite */
+
+        favorites.push({
+
+            text: currentExcuse,
+
+            category: currentCategory
+
+        });
+
+
+        saveFavorites();
+
+        updateFavoriteButton();
+
+        renderFavorites();
+
+        showToast(
+            "Saved to favorites! ❤️"
+        );
+
+    }
+);
+
+
+/* ========================================
+   UPDATE FAVORITE BUTTON
+======================================== */
+
+function updateFavoriteButton() {
+
+    const exists =
+        favorites.some(
+            item =>
+                item.text === currentExcuse
+        );
+
+
+    if (exists) {
+
+        favoriteButton.textContent =
+            "♥ Saved";
+
+        favoriteButton.classList.add(
+            "favorite"
+        );
+
+    } else {
+
+        favoriteButton.textContent =
+            "♡ Favorite";
+
+        favoriteButton.classList.remove(
+            "favorite"
+        );
+
+    }
+
+}
+
+
+/* ========================================
+   SAVE FAVORITES
+======================================== */
+
+function saveFavorites() {
+
+    localStorage.setItem(
+        "excuseFavorites",
+        JSON.stringify(favorites)
+    );
+
+}
+
+
+/* ========================================
+   OPEN FAVORITES
+======================================== */
+
+favoritesBtn.addEventListener(
+    "click",
+    () => {
+
+        favoritesPanel.classList.add(
+            "open"
+        );
+
+        favoritesPanel.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        renderFavorites();
+
+    }
+);
+
+
+/* ========================================
+   CLOSE FAVORITES
+======================================== */
+
+closeFavorites.addEventListener(
+    "click",
+    closeFavoritesPanel
+);
+
+
+function closeFavoritesPanel() {
+
+    favoritesPanel.classList.remove(
+        "open"
+    );
+
+    favoritesPanel.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+/* ========================================
+   DISPLAY FAVORITES
+======================================== */
+
+function renderFavorites() {
+
+    favoriteCount.textContent =
+        favorites.length;
+
+
+    if (favorites.length === 0) {
+
+        favoritesList.innerHTML = `
+            <p class="empty-favorites">
+                You haven't saved any excuses yet. 😭
+            </p>
+        `;
+
+        return;
+    }
+
+
+    favoritesList.innerHTML =
+        favorites
+            .map(
+                (item, index) => {
+
+                    return `
+                        <div class="favorite-item">
+
+                            <div>
+                                “${escapeHTML(item.text)}”
+                            </div>
+
+                            <div class="favorite-item-actions">
+
+                                <span class="favorite-category">
+                                    ${item.category.toUpperCase()}
+                                </span>
+
+                                <button
+                                    class="remove-favorite"
+                                    type="button"
+                                    data-index="${index}"
+                                >
+                                    🗑 Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+                    `;
+
+                }
+            )
+            .join("");
+
+
+    /* Remove buttons */
+
+    document
+        .querySelectorAll(".remove-favorite")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const index =
+                        Number(
+                            button.dataset.index
+                        );
+
+
+                    favorites.splice(
+                        index,
+                        1
+                    );
+
+
+                    saveFavorites();
+
+                    renderFavorites();
+
+                    updateFavoriteButton();
+
+                    showToast(
+                        "Removed from favorites."
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+/* ========================================
+   HTML ESCAPE
+======================================== */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* ========================================
+   CLEAR ALL FAVORITES
+======================================== */
+
+clearFavorites.addEventListener(
+    "click",
+    () => {
+
+        if (favorites.length === 0) {
+
+            showToast(
+                "There are no favorites to clear."
+            );
+
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to delete all favorites?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        favorites = [];
+
+
+        saveFavorites();
+
+        renderFavorites();
+
+        updateFavoriteButton();
+
+
+        showToast(
+            "All favorites cleared."
+        );
 
     }
 );
@@ -269,7 +651,7 @@ againButton.addEventListener(
 
 
 /* ========================================
-   MAIN GENERATE BUTTON
+   GENERATE BUTTON
 ======================================== */
 
 generateButton.addEventListener(
@@ -282,24 +664,67 @@ generateButton.addEventListener(
    TOAST
 ======================================== */
 
+let toastTimeout;
+
+
 function showToast(message) {
 
     toast.textContent =
         message;
 
-    toast.classList.add("show");
 
-    setTimeout(() => {
+    toast.classList.add(
+        "show"
+    );
 
-        toast.classList.remove("show");
 
-    }, 2200);
+    clearTimeout(
+        toastTimeout
+    );
+
+
+    toastTimeout =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2200
+        );
 
 }
 
 
 /* ========================================
-   INITIAL EXCUSE
+   ESCAPE KEY
 ======================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            favoritesPanel.classList.contains(
+                "open"
+            )
+        ) {
+
+            closeFavoritesPanel();
+
+        }
+
+    }
+);
+
+
+/* ========================================
+   INITIALIZE
+======================================== */
+
+renderFavorites();
 
 generateExcuse();
