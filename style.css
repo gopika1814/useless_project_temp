@@ -1,0 +1,39 @@
+body {
+    font-family: Arial;
+    background-color: #f5e6ff;
+    text-align: center;
+}
+
+.container {
+    width: 500px;
+    margin: 100px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+h1 {
+    color: purple;
+}
+
+select {
+    padding: 10px;
+    margin: 15px;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: purple;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#excuse {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #eee;
+    border-radius: 10px;
+    font-size: 18px;
+}
