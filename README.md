@@ -96,18 +96,6 @@ For Hardware:
 Not applicable. ExcuseLab is a software-only web application and does not require electronic hardware or circuits.
 
 
-### Project Demo
-
-
-
-
-<p align="center">
-  <a href="Excuse%20Generator.mp4">
-    <video src="Excuse%20Generator.mp4" alt="Watch Demo" width="800"></video>
-  </a>
-</p>
-*Explain what the video demonstrates*
-
 ## Team Contributions
 - Krishna Kishor: Worked on the HTML structure, website design, and overall development.
 - Gopikakrishna M S: Worked on the CSS styling, JavaScript functionality, testing, and improvements.
