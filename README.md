@@ -97,12 +97,13 @@ Not applicable. ExcuseLab is a software-only web application and does not requir
 
 
 ### Project Demo
-# Video
+
+
 
 
 <p align="center">
-  <a href="Video.mp4">
-    <img src="Excuse Generator.mp4" alt="Watch Demo" width="800">
+  <a href="Excuse%20Generator.mp4">
+    <img src="Excuse%20Generator.mp4" alt="Watch Demo" width="800">
   </a>
 </p>
 *Explain what the video demonstrates*
