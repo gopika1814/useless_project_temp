@@ -101,11 +101,9 @@ Not applicable. ExcuseLab is a software-only web application and does not requir
 
 
 
-
-
 <p align="center">
   <a href="Video.mp4">
-    <img src="Screenshot 1.png" alt="Watch Demo" width="800">
+    <img src="Video.mp4" alt="Watch Demo" width="800">
   </a>
 </p>
 *Explain what the video demonstrates*
