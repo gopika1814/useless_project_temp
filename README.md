@@ -64,17 +64,17 @@ The website works directly in the browser and does not require a backend server.
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](useless_project_temp\Screenshot 1.png)
+![Screenshot1](Screenshot 1.png)
 *The main ExcuseLab interface where users can select a category and generate an excuse.*
 
-![Screenshot2](useless_project_temp\Screenshot 2.png)
+![Screenshot2](Screenshot 2.png)
 *An automatically generated excuse with the believability score and action buttons.*
 
-![Screenshot3](useless_project_temp\Screenshot 3.png)
+![Screenshot3](Screenshot 3.png)
 *The Favorites panel where users can view, remove, and manage their saved excuses.*
 
 # Diagrams
-![Workflow](useless_project_temp\Screenshot 4.png)
+![Workflow](Screenshot 4.png)
 *Workflow showing how the user interacts with the ExcuseLab application.*
 
 For Hardware:
