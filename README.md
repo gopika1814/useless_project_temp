@@ -98,7 +98,8 @@ Not applicable. ExcuseLab is a software-only web application and does not requir
 
 ### Project Demo
 # Video
-[Add your demo video link here]![alt text](useless_project_temp\Excuse Generator.mp4)
+[Add your demo video link here]
+<video src="Excuse Generator.mp4" width="800" controls></video>
 *Explain what the video demonstrates*
 
 ## Team Contributions
