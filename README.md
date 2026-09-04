@@ -2,96 +2,97 @@
 
 
 
-# [Project Name] 🎯
+# Excuse Generator 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Homies
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Member 1: Gopikakrishna M S - LBS Institute of Technology for Women
+- Member 2: Krishna Kishor - LBS Institute of Technology for Women
 
 ### Project Description
-[2-3 lines about what your project does]
+ExcuseLab is a fun web-based excuse generator that creates ridiculous excuses for situations like college, late assignments, and skipping class.
+
+Users can choose a category, generate random excuses, copy them, and save their favorite excuses for later.
+
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Sometimes, when life gets complicated, finding a completely unnecessary excuse can be surprisingly difficult.
+Students need excuses. We decided to automate the process.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+ExcuseLab generates random and ridiculous excuses instantly.
+Choose a situation, press the generate button, and receive a professionally questionable excuse. Users can also copy excuses and save their favorites using the built-in Favorites system.
+
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- HTML5
+- CSS3
+- JavaScript
+- LocalStorage
+- Visual Studio Code
+- TinkerHub
+
 
 For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+Not applicable. This is a software-only web project.
+
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+1. Download or clone the project.
+2. Open the project folder.
+3. Make sure the following files are present
+   - index.html
+   - style.css
+   - script.js
+4. Open `index.html` in a web browser.
+No server or database is required.
+
 
 # Run
-[commands]
+Open `index.html` in any modern web browser.
+The website works directly in the browser and does not require a backend server.
 
 ### Project Documentation
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot1]![alt text](useless_project_temp\Screenshot 2026-09-04 051040.png)
+*The main ExcuseLab interface where users can select a category and generate an excuse.*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot2]![alt text](useless_project_temp\Screenshot 2026-09-04 051139.png)
+*An automatically generated excuse with the believability score and action buttons.*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot3]![alt text](useless_project_temp\Screenshot 2026-09-04 051202.png)
+*The Favorites panel where users can view, remove, and manage their saved excuses.*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+![Workflow]1[alt text](useless_project_temp\Screenshot 2026-09-04 051752.png)
+*Workflow showing how the user interacts with the ExcuseLab application.*
 
 For Hardware:
 
 # Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
+![Circuit]
+Not applicable. ExcuseLab is a software-only web application and does not require electronic hardware or circuits.
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
+[Add your demo video link here]![alt text](useless_project_temp\Excuse Generator.mp4)
 *Explain what the video demonstrates*
 
-# Additional Demos
-[Add any extra demo materials/links]
-
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Krishna Kishor: Worked on the HTML structure, website design, and overall development.
+- Gopikakrishna M S: Worked on the CSS styling, JavaScript functionality, testing, and improvements.
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
